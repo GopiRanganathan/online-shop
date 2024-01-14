@@ -9,12 +9,12 @@ from functools import wraps
 from sqlalchemy import func
 import stripe
 from datetime import datetime
-# from dotenv import load_dotenv
+from dotenv import load_dotenv
 import os
 
 
 # HoodHaven
-# load_dotenv()
+load_dotenv()
 app = Flask(__name__)
 app.secret_key = os.environ.get('FLASK_KEY')
 otp_secret_key = pyotp.random_base32()
@@ -84,7 +84,7 @@ class Favourite(db.Model):
     user = relationship('User', back_populates='favourite')
     user_id = db.Column(db.Integer, db.ForeignKey('Users.id'))
     product = relationship('Product', back_populates='favourite')
-    product_id = db.Column(db.Integer, db.ForeignKey('Products.id'), unique=True)
+    product_id = db.Column(db.Integer, db.ForeignKey('Products.id'))
   
 
 
@@ -405,7 +405,7 @@ def order():
     if current_user.is_active:
         cart_count = db.session.query(Cart).filter(Cart.user_id == current_user.id).count()
 
-    return render_template('order.html', products=products_list,cart=cart_count)
+    return render_template('order.html', active=current_user.is_active ,products=products_list,cart=cart_count)
 
 
 @app.route('/logout')
@@ -416,4 +416,4 @@ def logout():
     return redirect(url_for('home'))
 
 if __name__ == '__main__':
-    app.run(debug=False)
+    app.run(debug=True)
