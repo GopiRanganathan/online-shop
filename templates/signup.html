@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container login">
+    <div class="border p-5">
+        <h2 class="text-center text-secondary mb-3">
+            Sign Up / Sign In
+        </h2>
+        <form action="{{url_for('signup')}}" method="POST">
+           
+            <div class="mb-2">
+                <label for="username" class="form-label">Name</label>
+                <input type="text" class="form-control" id="username" name="username" value="{{name}}" required>
+            </div>
+            <div class="mb-2">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" value="{{email}}" required>
+            </div>
+            {% with messages = get_flashed_messages(with_categories=True) %}
+            {% if messages %}
+    
+            {% for category, message in messages %}
+            <p class="text-{{category}} text-center">{{ message }}</>
+            {% endfor %}
+   
+        {% endif %}
+        {% endwith %}
+
+
+            {% if email %}
+           
+                       <div class="my-2">
+                <label for="otp" class="form-label">OTP</label>
+                <input type="number" class="form-control" id="otp" name="otp" required>
+            </div>
+            <input type="submit" value="Sign Up" class="btn btn-dark w-100">
+            {% else %}
+
+            <input type="submit" value="Get OTP" class="btn btn-dark w-100">
+            {% endif %}
+        </form>
+
+    </div>
+</div>
+{% endblock %}

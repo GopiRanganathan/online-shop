@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container my-3 ">
+    <p class="text-uppercase text-secondary my-3 fs-2">Order Confirmed</p>
+    <div class="d-flex justify-content-center align-items-center success" >
+    <div class="card">
+        <h5 class="card-header">Order placed</h5>
+        <div class="card-body">
+          <h5 class="card-title">Thank you for shopping with us</h5>
+          <p class="card-text">Your order will be delivered in 5-7 fays. For more query: email us to <a href="mailto:hoodhavenjackets@gmail.com">hoodhavenjackets@gmail.com</a></p>
+          <a href="{{url_for('order')}}" class="btn btn-dark">Your orders</a>
+        </div>
+      </div>
+    </div>
+    </div>
+{% endblock %}

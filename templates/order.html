@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container my-3">
+    <p class="text-uppercase text-secondary my-3 fs-2">your orders</p>
+    <div class="d-flex flex-wrap">
+      {% for item in products %}
+        <div class="border m-3 p-3 order">
+            <a href="{{url_for('item', pid=item.id)}}" class="text-decoration-none text-dark">
+            <div class="d-flex g-0 justify-content-start">
+            
+                    <img src="{{item.product.image}}" alt="" class="cart-img">
+                
+                <div class="mx-3">
+                    <h6 class="text-uppercase">{{item.product.p_name}}</h6>
+                    <h5>₹ {{item.product.price}}</h5>
+                    <p class="text-secondary ">Color: <span class="text-dark">{{item.product.color}}</span><br>Size: <span class="text-dark">{{item.size.upper()}}</span><br>Quantity: <span class="text-dark">{{item.quantity}}</span><br><b class="text-dark">{{item.state.upper()}}</b></p>
+                </div>
+            </div></a>
+    </div>
+    {% endfor %}
+</div>
+    </div>
+{% endblock %}

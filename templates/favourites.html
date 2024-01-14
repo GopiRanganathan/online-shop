@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container my-3">
+    <p class="text-uppercase text-secondary my-3 fs-2">your Wishlists</p>
+    <div class="d-flex flex-wrap">
+      {% for product in products %}
+        <div class="border m-3 p-3 fav">
+            <a href="{{url_for('item', pid=product.id)}}" class="text-decoration-none text-dark">
+            <div class="d-flex g-0 justify-content-start">
+            
+                    <img src="{{product.image}}" alt="" class="cart-img">
+                
+                <div class="mx-3">
+                    <h6 class="text-uppercase">{{product.p_name}}</h6>
+                    <h5>₹ {{product.price}}</h5>
+                    <p class="text-secondary ">Color: <span class="text-dark">{{product.color}}</span></p>
+                </div>
+            </div></a>
+    </div>
+    {% endfor %}
+</div>
+    </div>
+{% endblock %}

@@ -1,0 +1,158 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container my-3">
+    <h3 class="text-uppercase my-3">{{product.p_name}}</h3>
+    <div class="row">
+        <div class="col">
+            <img src="{{product.image}}" alt="" class="view-img">
+        </div>
+        <div class="col">
+            <h1 class="text-danger my-3">₹ {{product.price}}</h1>
+            <p class="text-secondary">Inclusive of all taxes</p>
+            <p class="text-dark">Free shipping on order over INR 999</p>
+            <div class="offer border rounded p-3 my-2">
+                <!-- <hr> -->
+                   <h5 class="text-primary font-weight-bold mb-3">Available Offers</h5>
+                    <p>Use <b class="font-weight-bold">HOODHAVEN10</b> to get 10% Offer</p>
+            </div>
+            <p class="text-secondary">Color: <b class="text-dark">Grey</b></p>
+            <div class="size my-2">
+                <h5>Size:</h5>
+                <form action="">
+                  {% if product.xs <= 0 %}
+                  <input type="radio" class="btn-check" name="size" id="xs" value="xs" autocomplete="off" diabled>
+                  {% else %}
+                    <input type="radio" class="btn-check" name="size" id="xs" value="xs" autocomplete="off" checked>
+                    {% endif %}
+                <label class="btn" for="xs">XS</label>
+
+                {% if product.s <= 0 %}
+                <input type="radio" class="btn-check" name="size" id="s" value="s" autocomplete="off" disabled>
+                {% else %}
+                <input type="radio" class="btn-check" name="size" id="s" value="s" autocomplete="off" >
+                {% endif %}
+                <label class="btn" for="s">S</label>
+                
+                {% if product.m <= 0 %}
+                <input type="radio" class="btn-check" name="size" id="m" value="m" autocomplete="off" disabled>
+                {% else %}
+                <input type="radio" class="btn-check" name="size" id="m" value="m" autocomplete="off">
+                {% endif %}
+                <label class="btn" for="m">M</label>
+
+                {% if product.l <= 0 %}
+                <input type="radio" class="btn-check" name="size" id="l" value="l" autocomplete="off" disabled>
+                {% else %}
+                <input type="radio" class="btn-check" name="size" id="l" value="l" autocomplete="off">
+                {% endif %}
+                <label class="btn" for="l">L</label>
+                
+                {% if product.xl <= 0 %}
+                <input type="radio" class="btn-check" name="size" id="xl" value="xl" autocomplete="off" disabled>
+                {% else %}
+                <input type="radio" class="btn-check" name="size" id="xl" value="xl" autocomplete="off">
+                {% endif %}
+                <label class="btn" for="xl">XL</label>
+
+                {% if product.xxl <= 0 %}
+                <input type="radio" class="btn-check" name="size" id="xxl" value="xxl" autocomplete="off" disabled>
+                {% else %}
+                <input type="radio" class="btn-check" name="size" id="xxl" value="xxl" autocomplete="off" >
+                {% endif %}
+                <label class="btn" for="xxl">XXL</label>
+            </form>
+            <a type="button" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#sizechart">
+                Size Chart
+            </a>
+            {% with messages = get_flashed_messages(with_categories=True) %}
+  {% if messages %}
+
+  {% for category,message in messages %}
+  <p class="text-{{category}} text-center">{{ message }}</>
+  {% endfor %}
+
+{% endif %}
+{% endwith %}
+
+
+
+            </div>
+            <button onclick="addToCart({{product.id}})" class="btn btn-lg btn-dark mt-4 mb-2 w-100">ADD TO CART</button>
+            {% if fav %}
+            <a href="{{url_for('add_to_wishlist', pid=product.id)}}" class="btn btn-lg btn-outline-secondary  w-100">REMOVE FROM WISHLIST</a>
+            {% else %}
+            <a href="{{url_for('add_to_wishlist', pid=product.id)}}" class="btn btn-lg btn-outline-secondary  w-100">ADD TO WISHLIST</a>
+            {% endif %}
+
+           
+            
+        </div>
+    </div>
+</div>
+
+
+  <div class="modal fade" id="sizechart" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Size Chart (INCH)</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Size</th>
+                    <th scope="col">Shoulder</th>
+                    <th scope="col">Chest</th>
+                    <th scope="col">Waist</th>
+                
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">XS</th>
+                    <td>14</td>
+                    <td>30</td>
+                    <td>23</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">S</th>
+                    <td>14.5</td>
+                    <td>32</td>
+                    <td>25</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">M</th>
+                    <td>15</td>
+                    <td>34</td>
+                    <td>27</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">L</th>
+                    <td >15.5</td>
+                    <td>36</td>
+                    <td>29</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">XL</th>
+                    <td>16</td>
+                    <td>38</td>
+                    <td>31</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">XXL</th>
+                    <td>16.8</td>
+                    <td>40</td>
+                    <td>33</td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

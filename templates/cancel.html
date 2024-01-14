@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container my-3 ">
+    <p class="text-uppercase text-secondary my-3 fs-2">Order Cancelled</p>
+    <div class="d-flex justify-content-center align-items-center success" >
+    <div class="card">
+        <h5 class="card-header">Order Cancelled</h5>
+        <div class="card-body">
+          <h5 class="card-title">Sorry, There was a problem with the Payment Gateway</h5>
+          <p class="card-text">Try again. If money debited from your account, email us to <a href="mailto:hoodhavenjackets@gmail.com">hoodhavenjackets@gmail.com</a></p>
+          <a href="{{url_for('home')}}" class="btn btn-dark">Go To HomePage</a>
+        </div>
+      </div>
+    </div>
+    </div>
+{% endblock %}

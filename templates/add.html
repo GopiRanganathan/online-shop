@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container my-3" >
+    <h3 class="text-uppercase my-3">ADD NEW PRODUCT</h3>
+    <form onsubmit="add_product(event)" class="p-3" >
+        <div class="mb-2">
+            <label for="product name" class="form-label">Product Name</label>
+            <input type="text" class="form-control" id="product name" name="pname" required>
+        </div>
+        <div class="mb-2">
+            <label for="image_url" class="form-label">Image URL</label>
+            <input type="text" class="form-control" id="image_url" name="pimage" required>
+        </div>
+        <div class="mb-2">
+            <label for="category" class="form-label">Category</label>
+            <Select class="form-control" id="category" name="pcategory" required>
+                <option selected>Choose category</option>
+                <option value="men">Men</option>
+                <option value="women">Women</option>
+                <option value="boys">Boys</option>
+                <option value="girls">Girls</option>
+                </Select>
+        </div>
+        <div class="mb-2">
+            <label for="color" class="form-label">Color</label>
+            <input type="text" class="form-control" id="color" name="pcolor" required>
+        </div>
+        <div class="mb-2">
+            <label for="price" class="form-label">Price (INR)</label>
+            <input type="number" class="form-control" id="price" name="pprice" required>
+        </div>
+        <div class="border p-3">
+            <h5 class="text-secondary text-uppercase my-2 mb-3">Quantities</h5>
+            <div class="row row-cols-2 row-cols-md-3">
+                <div class="col mb-2">
+                    <label for="xs" class="form-label">XS (Extra-Small)</label>
+                    <input type="number" class="form-control" id="xs" name="pxs" required>
+                </div>
+                <div class="col mb-2">
+                    <label for="s" class="form-label">S (Small)</label>
+                    <input type="number" class="form-control" id="s" name="ps" required>
+                </div>
+                <div class="col mb-2">
+                    <label for="m" class="form-label">M (Medium)</label>
+                    <input type="number" class="form-control" id="m" name="pm" required>
+                </div>
+                <div class="col mb-2">
+                    <label for="l" class="form-label">L (Large)</label>
+                    <input type="number" class="form-control" id="l" name="pl" required>
+                </div>
+                <div class="col mb-2">
+                    <label for="xl" class="form-label">XL (Extra-Large)</label>
+                    <input type="number" class="form-control" id="xl" name="pxl" required>
+                </div>
+                <div class="col mb-2">
+                    <label for="xxl" class="form-label">XXL (Double-Extra-Large)</label>
+                    <input type="number" class="form-control" id="xxl" name="pxxl" required>
+                </div>
+            </div>
+           
+        </div>
+        <input type="submit" value="ADD NEW PRODUCT" class="btn btn-dark w-100 my-3" >
+        
+
+    </form>
+
+</div>
+{% endblock %}

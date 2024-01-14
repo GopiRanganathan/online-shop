@@ -1,0 +1,41 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+.slide{
+    max-height:450px;
+    /* max-width:80vw; */
+    object-fit: cover;
+}
+
+.view-img{
+    height:600px;
+}
+.cart-img{
+    height:150px;
+
+}
+.p-img{
+    height:18rem;
+    width:18rem;
+    object-fit:cover;
+}
+
+.login{
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.fav{
+  width:400px;
+}
+.order{
+    width:500px;
+}
+
+.success{
+    min-height:60vh;
+}
